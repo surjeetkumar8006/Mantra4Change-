@@ -24,10 +24,10 @@ function Dashboard() {
       const query = new URLSearchParams(filters).toString();
       
       const [metricsRes, geoRes, summaryRes, actionsRes] = await Promise.all([
-        axios.get(`http://localhost:5000/api/dashboard/metrics?${query}`),
-        axios.get(`http://localhost:5000/api/dashboard/performance?${query}`),
-        axios.get(`http://localhost:5000/api/dashboard/summary?${query}`),
-        axios.get(`http://localhost:5000/api/dashboard/actions?${query}`)
+        axios.get(`https://mantra4change.onrender.com/api/dashboard/metrics?${query}`),
+        axios.get(`https://mantra4change.onrender.com/api/dashboard/performance?${query}`),
+        axios.get(`https://mantra4change.onrender.com/api/dashboard/summary?${query}`),
+        axios.get(`https://mantra4change.onrender.com/api/dashboard/actions?${query}`)
       ]);
 
       setMetrics(metricsRes.data);

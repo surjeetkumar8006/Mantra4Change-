@@ -12,7 +12,7 @@ export default function GrantAssistant() {
 
   useEffect(() => {
     // Fetch available grants and months
-    axios.get('http://localhost:5000/api/grants').then(res => {
+    axios.get('https://mantra4change.onrender.com/api/grants').then(res => {
       setGrantsList(res.data.grants);
       setMonthsList(res.data.months);
     });
@@ -22,12 +22,12 @@ export default function GrantAssistant() {
     if (!selectedGrant || !selectedMonth) return;
     setLoading(true);
     try {
-      const res = await axios.get(`http://localhost:5000/api/grants/report?grantId=${selectedGrant}&month=${selectedMonth}`);
+      const res = await axios.get(`https://mantra4change.onrender.com/api/grants/report?grantId=${selectedGrant}&month=${selectedMonth}`);
       setReportData(res.data);
       
       // Auto-generate narrative if we have performance data
       if (res.data.performance) {
-        const narrRes = await axios.post('http://localhost:5000/api/grants/generate-narrative', {
+        const narrRes = await axios.post('https://mantra4change.onrender.com/api/grants/generate-narrative', {
           performance: res.data.performance,
           finance: res.data.finance
         });
